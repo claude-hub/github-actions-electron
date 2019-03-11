@@ -1,0 +1,18 @@
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+import { store } from './store'
+import ElementUI from 'element-ui'
+
+/** 生产提示关闭 */
+Vue.config.productionTip = false
+/** 注册 element 组件 */
+Vue.use(ElementUI, {
+  size: 'small' // medium / small / mini
+})
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
