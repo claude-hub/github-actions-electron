@@ -1,0 +1,32 @@
+//通用样式
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei";
+  line-height: 2;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+html, body, #app{
+  width: 100%;
+  height: 100%;
+}
+
+.text-white {
+  color: #fff;
+}
+
+h1, h2, h3, h4, h6, h6 {
+  font-weight: 500;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+}

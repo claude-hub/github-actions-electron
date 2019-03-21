@@ -3,6 +3,8 @@ import App from './App'
 import router from './router'
 import { store } from './store'
 import ElementUI from 'element-ui'
+import './assets/styles/index.scss'
+import './assets/icon/iconfont.css'
 
 /** 生产提示关闭 */
 Vue.config.productionTip = false
