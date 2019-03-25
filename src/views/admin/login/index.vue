@@ -134,7 +134,7 @@ export default {
       margin-bottom: 12px;
     }
     .el-form-item__error{
-      padding: 0px;
+      padding: 0;
     }
     .login-submit {
       margin-top: 20px;

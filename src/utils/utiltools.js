@@ -2,10 +2,10 @@
  * 生成随机len位数字
  */
 export const randomLenNum = (len, date) => {
-  let random = '';
-  random = Math.ceil(Math.random() * 100000000000000).toString().substr(0, len ? len : 4);
-  if (date) random = random + Date.now();
-  return random;
+  let random = ''
+  random = Math.ceil(Math.random() * 100000000000000).toString().substr(0, len || 4)
+  if (date) random = random + Date.now()
+  return random
 }
 
 export const initMenu = (router, menu) => {
@@ -55,7 +55,7 @@ export const fullscreenToggel = () => {
  * esc监听全屏
  */
 export const listenfullscreen = (callback) => {
-  function listen() {
+  function listen () {
     callback()
   }
   document.addEventListener('fullscreenchange', function (e) {
@@ -76,7 +76,7 @@ export const listenfullscreen = (callback) => {
  * 浏览器判断是否全屏
  */
 export const fullscreenEnable = () => {
-  var isFullscreen = document.fullscreenEnabled ||
+  let isFullscreen = document.fullscreenEnabled ||
     window.fullScreen ||
     document.mozFullscreenEnabled ||
     document.webkitIsFullScreen
@@ -108,4 +108,3 @@ export const exitFullScreen = () => {
     document.mozCancelFullScreen()
   }
 }
-

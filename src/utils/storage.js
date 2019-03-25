@@ -1,32 +1,32 @@
 import Cookies from 'js-cookie'
 
-const sessionStorage = window.sessionStorage;
+const sessionStorage = window.sessionStorage
 
 /**
  * 存储sessionStorage
  */
 export const setStore = (name, content) => {
-  if (!name) return;
+  if (!name) return
   if (typeof content !== 'string') {
-    content = JSON.stringify(content);
+    content = JSON.stringify(content)
   }
-  sessionStorage.setItem(name, content);
+  sessionStorage.setItem(name, content)
 }
 
 /**
  * 获取sessionStorage
  */
 export const getStore = name => {
-  if (!name) return;
-  return JSON.parse(sessionStorage.getItem(name));
+  if (!name) return
+  return JSON.parse(sessionStorage.getItem(name))
 }
 
 /**
  * 删除sessionStorage
  */
 export const removeStore = name => {
-  if (!name) return;
-  sessionStorage.removeItem(name);
+  if (!name) return
+  sessionStorage.removeItem(name)
 }
 
 /**

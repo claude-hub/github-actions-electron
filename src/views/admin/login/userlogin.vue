@@ -27,7 +27,7 @@
         </el-col>
         <el-col :span="12">
           <div class="login-code">
-            <img :src="code.src" @click="refreshCode"/>
+            <img :src="code.src" @click="refreshCode" alt=""/>
           </div>
         </el-col>
       </el-row>
@@ -41,8 +41,8 @@
 
 <script>
 import { randomLenNum } from '@/utils/utiltools'
-import {mapGetters} from 'vuex'
-import {Msg} from '@/utils/message'
+import { mapGetters } from 'vuex'
+import { Msg } from '@/utils/message'
 
 export default {
   name: 'userlogin',
@@ -61,15 +61,15 @@ export default {
       },
       loginRules: {
         loginStr: [
-          {required: true, message: '请输入账号', trigger: 'blur'}
+          { required: true, message: '请输入账号', trigger: 'blur' }
         ],
         password: [
-          {required: true, message: '请输入密码', trigger: 'blur'},
-          {min: 6, message: '密码长度最少为6位', trigger: 'blur'}
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 6, message: '密码长度最少为6位', trigger: 'blur' }
         ],
         captcha: [
-          {required: true, message: '请输入验证码', trigger: 'blur'},
-          {min: 4, max: 4, message: '验证码长度为4位', trigger: 'blur'}
+          { required: true, message: '请输入验证码', trigger: 'blur' },
+          { min: 4, max: 4, message: '验证码长度为4位', trigger: 'blur' }
         ]
       },
       passwordType: 'password'
@@ -96,7 +96,7 @@ export default {
         if (valid) {
           this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
             this.$store.dispatch('SetPageState', this.defaultHomePage)
-            this.$router.push({path: this.defaultHomePage.path})
+            this.$router.push({ path: this.defaultHomePage.path })
           }).catch(err => {
             console.log(err)
             Msg.error('验证码错误')
