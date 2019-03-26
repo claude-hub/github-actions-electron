@@ -3,19 +3,21 @@
     <div class="background">
       <div class="login-container" @keyup.enter.native="handleLogin">
         <div class="login-info text-white animated fadeInLeft">
-          <h2 class="login-info-title">千寻---通用web系统---后台登录</h2>
+          <h2 class="login-info-title">
+            千寻---通用web系统---后台登录
+          </h2>
           <ul class="login-info-list">
             <li class="login-info-item">
-              <i class="el-icon-check"></i>&nbsp;是一个基于Spring Boot、spring security开发基于Vue前后分离的开发平台
+              <i class="el-icon-check" />&nbsp;是一个基于Spring Boot、spring security开发基于Vue前后分离的开发平台
             </li>
             <li class="login-info-item">
-              <i class="el-icon-check"></i>&nbsp;是一个基于vue+vuex+vue-router快速后台管理系统，采用token交互验证方式。
+              <i class="el-icon-check" />&nbsp;是一个基于vue+vuex+vue-router快速后台管理系统，采用token交互验证方式。
             </li>
             <li class="login-info-item">
-              <i class="el-icon-check"></i>&nbsp;最大程度上帮助企业节省时间成本和费用开支。
+              <i class="el-icon-check" />&nbsp;最大程度上帮助企业节省时间成本和费用开支。
             </li>
             <li class="login-info-item">
-              <i class="el-icon-check"></i>&nbsp;当前版本：v1.0.0
+              <i class="el-icon-check" />&nbsp;当前版本：v1.0.0
             </li>
           </ul>
         </div>
@@ -26,10 +28,10 @@
             </h4>
             <el-tabs v-model="activeName">
               <el-tab-pane label="账号密码" name="user">
-                <userLogin></userLogin>
+                <userLogin />
               </el-tab-pane>
               <el-tab-pane label="短信验证码" name="code">
-                <codeLogin></codeLogin>
+                <codeLogin />
               </el-tab-pane>
             </el-tabs>
           </div>
@@ -48,15 +50,15 @@ import userLogin from './userlogin'
 import codeLogin from './codelogin'
 
 export default {
-  name: 'login',
-  data () {
-    return {
-      activeName: 'user'
-    }
-  },
+  name: 'Login',
   components: {
     userLogin,
     codeLogin
+  },
+  data() {
+    return {
+      activeName: 'user'
+    }
   }
 }
 </script>

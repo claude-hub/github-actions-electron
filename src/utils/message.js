@@ -7,19 +7,19 @@ import { Message } from 'element-ui'
  */
 
 export class Msg {
-  static success (msg) {
+  static success(msg) {
     Message.success(msg)
   }
 
-  static error (msg) {
+  static error(msg) {
     Message.error(msg)
   }
 
-  static warn (msg) {
+  static warn(msg) {
     Message.warning(msg)
   }
 
-  static info (msg) {
+  static info(msg) {
     Message.info(msg)
   }
 }

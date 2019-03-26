@@ -1,27 +1,31 @@
 <template>
-  <el-form class="login-form" status-icon :rules="loginRules" ref="loginForm" :model="loginForm" label-width="0">
+  <el-form ref="loginForm" class="login-form" status-icon :rules="loginRules" :model="loginForm" label-width="0">
     <el-form-item prop="mobile">
-      <el-input size="small" v-model="loginForm.mobile" auto-complete="off" placeholder="手机号码">
-        <i slot="prefix" class="iconfont icon-shouji"></i>
+      <el-input v-model="loginForm.mobile" size="small" auto-complete="off" placeholder="手机号码">
+        <i slot="prefix" class="iconfont icon-shouji" />
       </el-input>
     </el-form-item>
     <el-form-item prop="code">
       <el-row :span="24">
         <el-col :span="14">
-          <el-input size="small" v-model="loginForm.code" auto-complete="off" placeholder="验证码">
+          <el-input v-model="loginForm.code" size="small" auto-complete="off" placeholder="验证码">
             <!--<template slot="append">-->
             <!--<span class="msg-text">发送验证码</span>-->
             <!--</template>-->
-            <i slot="prefix" class="iconfont icon-yanzhengma" style="margin-top:10px;"></i>
+            <i slot="prefix" class="iconfont icon-yanzhengma" style="margin-top:10px;" />
           </el-input>
         </el-col>
         <el-col :span="10">
-          <div class="msg-text">发送验证码</div>
+          <div class="msg-text">
+            发送验证码
+          </div>
         </el-col>
       </el-row>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" size="small" class="login-submit">登录</el-button>
+      <el-button type="primary" size="small" class="login-submit">
+        登录
+      </el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -30,8 +34,9 @@
 import { isvalidatemobile } from '@/utils/validate'
 
 export default {
-  name: 'codelogin',
-  data () {
+  name: 'Codelogin',
+  props: [],
+  data() {
     const validatePhone = (rule, value, callback) => {
       if (isvalidatemobile(value)[0]) {
         callback(new Error(isvalidatemobile(value)[1]))
@@ -57,9 +62,8 @@ export default {
       }
     }
   },
-  props: [],
   methods: {
-    handleLogin () {
+    handleLogin() {
     }
   }
 }

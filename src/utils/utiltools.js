@@ -55,19 +55,19 @@ export const fullscreenToggel = () => {
  * esc监听全屏
  */
 export const listenfullscreen = (callback) => {
-  function listen () {
+  function listen() {
     callback()
   }
-  document.addEventListener('fullscreenchange', function (e) {
+  document.addEventListener('fullscreenchange', function(e) {
     listen()
   })
-  document.addEventListener('mozfullscreenchange', function (e) {
+  document.addEventListener('mozfullscreenchange', function(e) {
     listen()
   })
-  document.addEventListener('webkitfullscreenchange', function (e) {
+  document.addEventListener('webkitfullscreenchange', function(e) {
     listen()
   })
-  document.addEventListener('msfullscreenchange', function (e) {
+  document.addEventListener('msfullscreenchange', function(e) {
     listen()
   })
 }
@@ -76,7 +76,7 @@ export const listenfullscreen = (callback) => {
  * 浏览器判断是否全屏
  */
 export const fullscreenEnable = () => {
-  let isFullscreen = document.fullscreenEnabled ||
+  const isFullscreen = document.fullscreenEnabled ||
     window.fullScreen ||
     document.mozFullscreenEnabled ||
     document.webkitIsFullScreen

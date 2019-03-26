@@ -1,8 +1,8 @@
 /**
  * 判断手机号码是否正确
  */
-export function isvalidatemobile (phone) {
-  let list = []
+export function isvalidatemobile(phone) {
+  const list = []
   let result = true
   let msg = ''
   var isPhone = /^0\d{2,3}-?\d{7,8}$/
@@ -28,7 +28,7 @@ export function isvalidatemobile (phone) {
 /**
  * 判断是否为空
  */
-export function validatenull (val) {
+export function validatenull(val) {
   if (val instanceof Array) {
     if (val.length === 0) return true
   } else if (val instanceof Object) {

@@ -1,9 +1,8 @@
 module.exports = {
-    lintOnSave: true,
-    devServer: {
-        port: 8080,
-        open: false
-    },
-    configureWebpack: {
-    }
+  lintOnSave: true,
+  devServer: {
+    port: 8080,
+    open: false
+  },
+  configureWebpack: {}
 }
