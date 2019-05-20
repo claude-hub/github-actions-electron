@@ -1,24 +1,21 @@
-import {setStore, getStore, removeStore} from '@/tools/storage'
+import { setStore, getStore, removeStore, setCookies } from '../../utils/storage'
 
 const common = {
   state: {
-    /** 默认首页路由、名字 **/
-    defaultHomePage: {
-      name: '首页',
-      path: '/admin'
-    },
+    langId: 1,
     /** 菜单是否缩放 **/
     isCollapse: false,
     /** 是否全屏 **/
     isFullScreen: false,
     /** 是否锁屏 **/
     isLock: getStore('isLock') || false,
-    /**锁屏密码**/
+    /** 锁屏密码 **/
     lockPassword: getStore('lockPassword'),
     /** 主题色 **/
     theme: getStore('theme') || '#409EFF',
+    /** 语言设置 **/
+    language: 'zh-CN'
   },
-  /** 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation */
   mutations: {
     SET_COLLAPSE: (state, action) => {
       state.isCollapse = !state.isCollapse
@@ -43,14 +40,20 @@ const common = {
       state.lockPasswd = ''
       removeStore('lockPassword')
       removeStore('isLock')
+    },
+    SET_LANGUAGE: (state, language) => {
+      state.language = language
+      setCookies('language', language)
     }
   },
-  /** Action 提交的是 mutation，而不是直接变更状态。Action 可以包含任意异步操作。 */
   actions: {
-    SetCollapseState({commit}) {
+    SetCollapseState ({ commit }) {
       commit('SET_COLLAPSE')
     },
-    SetFullScreen({commit}) {
+    SetLanguage ({ commit }, language) {
+      commit('SET_LANGUAGE', language)
+    },
+    SetFullScreen ({ commit }) {
       commit('SET_FULL_SCREEN')
     }
   }

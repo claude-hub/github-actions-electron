@@ -1,10 +1,10 @@
-import {server} from '@/tools/server'
+import { server } from '../utils/server'
 
 /**
  * 用户api接口
  */
 export class MenuApi {
-  static userMenu(params) {
-    return server.get('/admin/auth/menu', params)
+  static userMenus (params) {
+    return server.get('/admin/api/sysMenu/userMenus', params)
   }
 }

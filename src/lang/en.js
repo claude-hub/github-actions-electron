@@ -1,6 +1,6 @@
 export default {
   logo: {
-    name: 'CashBox',
+    name: 'QX',
     title: 'backend'
   },
   close: {
@@ -17,16 +17,6 @@ export default {
       'name': 'Dashboard',
       'path': '/',
       'icon': 'icon-home'
-    },
-    {
-      'name': 'Pub',
-      'path': '/pub',
-      'icon': 'icon-gonggao'
-    },
-    {
-      'name': 'Swipe',
-      'path': '/swipe',
-      'icon': 'icon-lunbo_huaban'
     }
   ],
   language: {
@@ -48,7 +38,7 @@ export default {
     cancel: 'cancel'
   },
   login: {
-    title: 'CashBox backend system',
+    title: 'QianXun backend system',
     logIn: 'Log in',
     account: 'Account',
     password: 'Password',

@@ -9,6 +9,17 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      component: () => import('../views/admin/layout/index'),
+      children: [
+        {
+          path: '/',
+          name: 'adminhome',
+          component: () => import('../views/admin/home/index')
+        }
+      ]
+    },
+    {
+      path: '/login',
       name: 'login',
       component: () => import('../views/admin/login/index')
     }

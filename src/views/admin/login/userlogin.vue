@@ -1,7 +1,7 @@
 <template>
   <el-form class="login-form" status-icon :rules="loginRules" ref="loginForm" :model="loginForm" label-width="0">
-    <el-form-item prop="loginStr">
-      <el-input size="small" @keyup.enter.native="handleLogin" v-model="loginForm.loginStr" auto-complete="off"
+    <el-form-item prop="username">
+      <el-input size="small" @keyup.enter.native="handleLogin" v-model="loginForm.username" auto-complete="off"
                 placeholder="用户名 | 邮箱 | 手机号">
         <i slot="prefix" class="iconfont icon-user"></i>
       </el-input>
@@ -34,7 +34,11 @@
     </el-form-item>
     <el-checkbox v-model="loginForm.remember">记住账号</el-checkbox>
     <el-form-item>
-      <el-button type="primary" size="small" @click.native.prevent="handleLogin" class="login-submit">登录</el-button>
+      <el-button type="primary"
+                 :loading="this.loading"
+                 size="small"
+                 @click.native.prevent="handleLogin"
+                 class="login-submit">登录</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -49,27 +53,29 @@ export default {
   data () {
     return {
       loginForm: {
-        loginStr: 'admin',
+        username: '15223246130',
         password: '123456',
         captcha: '',
+        randomStr: '',
         remember: false
       },
+      loading: false,
       code: {
         src: '',
         len: 4,
         type: 'text'
       },
       loginRules: {
-        loginStr: [
-          {required: true, message: '请输入账号', trigger: 'blur'}
+        username: [
+          { required: true, message: '请输入账号', trigger: 'blur' }
         ],
         password: [
-          {required: true, message: '请输入密码', trigger: 'blur'},
-          {min: 6, message: '密码长度最少为6位', trigger: 'blur'}
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 6, message: '密码长度最少为6位', trigger: 'blur' }
         ],
         captcha: [
-          {required: true, message: '请输入验证码', trigger: 'blur'},
-          {min: 4, max: 4, message: '验证码长度为4位', trigger: 'blur'}
+          { required: true, message: '请输入验证码', trigger: 'blur' },
+          { min: 4, max: 4, message: '验证码长度为4位', trigger: 'blur' }
         ]
       },
       passwordType: 'password'
@@ -83,8 +89,8 @@ export default {
   },
   methods: {
     refreshCode () {
-      let randomStr = randomLenNum(this.code.len, true)
-      this.code.src = `${process.env.BASE_API}/api/admin/tool/captcha?randomStr=${randomStr}`
+      this.loginForm.randomStr = randomLenNum(this.code.len, true)
+      this.code.src = `${window.location.origin}/captcha?randomStr=${this.loginForm.randomStr}`
     },
     showPassword () {
       this.passwordType === ''
@@ -92,13 +98,17 @@ export default {
         : (this.passwordType = '')
     },
     handleLogin () {
+      this.loading = true
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-            this.$store.dispatch('SetPageState', this.defaultHomePage)
-            this.$router.push({path: this.defaultHomePage.path})
-          }).catch(err => {
+            this.loading = false
+            // this.$store.dispatch('SetPageState', this.defaultHomePage)
+            // this.$router.push({ path: this.defaultHomePage.path })
+            this.$router.push({ path: this.$t('defaultHomePage.path') })
+          }).catch((err) => {
             console.log(err)
+            this.loading = false
             Msg.error('验证码错误')
             this.refreshCode()
           })

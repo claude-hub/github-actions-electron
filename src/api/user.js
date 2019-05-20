@@ -1,13 +1,24 @@
-import {server} from '@/tools/server'
+﻿import { server } from '../utils/server'
 
 /**
  * 用户api接口
  */
 export class UserApi {
-  static login(params) {
-    return server.post('/admin/auth/sign_in', params)
+  static login (params) {
+    return server({
+      url: '/auth/oauth/token',
+      headers: {
+        isToken: false
+      },
+      method: 'post',
+      params: params
+    })
   }
-  static getUserList(params) {
+  static getUserList (params) {
     return server.get('/admin/sysUser/query', params)
+  }
+
+  static getUserInfo () {
+
   }
 }

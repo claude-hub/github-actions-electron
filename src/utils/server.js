@@ -1,9 +1,9 @@
 import axios from 'axios'
 import router from '@/router'
-import { store } from '@/store'
+import store from '../store'
 
 export const server = axios.create({
-  baseURL: `${process.env.BASE_API}/api`,
+  baseURL: '/',
   timeout: 1000 * 30,
   withCredentials: true
 })

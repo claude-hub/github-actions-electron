@@ -21,7 +21,7 @@
 import Logo from './logo'
 import { mapGetters } from 'vuex'
 import SidebarItem from './sidebarItem'
-import { setUrlPath } from '../../../utils/utiltools'
+import { setUrlPath } from '../../../../utils/utiltools'
 
 export default {
   name: 'index',

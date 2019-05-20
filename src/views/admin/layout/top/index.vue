@@ -51,7 +51,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import { fullscreenToggel, listenfullscreen } from '@/utils/utiltools'
+import { fullscreenToggel, listenfullscreen } from '../../../../utils/utiltools'
 import openedPages from './openedpages'
 
 export default {
@@ -110,7 +110,7 @@ export default {
     border-bottom: 1px solid #eee;
     .left-menu {
       display: flex;
-      justify-content: start;
+      justify-content: flex-start;
       .tags-breadcrumb {
         cursor: pointer;
         .icon-menu {

@@ -1,9 +1,9 @@
-import { getCookies } from '@/utils/storage'
+import store from './store'
 import router from './router'
 
 /** 路由控制 */
 router.beforeEach((to, from, next) => {
-  if (getCookies('userName')) {
+  if (store.getters.access_token) {
     next()
   } else {
     if (to.path === '/login') { // 如果是登录页面路径，就直接next()

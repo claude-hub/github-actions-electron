@@ -7,7 +7,7 @@ export function isvalidatemobile (phone) {
   let msg = ''
   var isPhone = /^0\d{2,3}-?\d{7,8}$/
   // 增加134 减少|1349[0-9]{7}，增加181,增加145，增加17[678]
-  var isMob = /^((\+?86)|(\(\+86\)))?(13[0123456789][0-9]{8}|15[012356789][0-9]{8}|18[012356789][0-9]{8}|14[57][0-9]{8}|17[3678][0-9]{8})$/
+  // var isMob = /^((\+?86)|(\(\+86\)))?(13[0123456789][0-9]{8}|15[012356789][0-9]{8}|18[012356789][0-9]{8}|14[57][0-9]{8}|17[3678][0-9]{8})$/
   if (!validatenull(phone)) {
     if (phone.length === 11) {
       if (isPhone.test(phone)) {
@@ -34,8 +34,8 @@ export function validatenull (val) {
   } else if (val instanceof Object) {
     if (JSON.stringify(val) === '{}') return true
   } else {
-    if (val === 'null' || val == null || val == 'undefined' || val == undefined || val == '') return true
+    if (val === 'null' || val == null || val === 'undefined' || val === undefined || val === '') return true
     return false
   }
   return false
-};
+}

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {isvalidatemobile} from '@/utils/validate'
+import { isvalidatemobile } from '@/utils/validate'
 
 export default {
   name: 'codelogin',
@@ -52,8 +52,8 @@ export default {
         code: ''
       },
       loginRules: {
-        mobile: [{required: true, trigger: 'blur', validator: validatePhone}],
-        code: [{required: true, trigger: 'blur', validator: validateCode}]
+        mobile: [{ required: true, trigger: 'blur', validator: validatePhone }],
+        code: [{ required: true, trigger: 'blur', validator: validateCode }]
       }
     }
   },

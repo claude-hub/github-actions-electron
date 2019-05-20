@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-import { setUrlPath, resolveUrlPath } from '../../../utils/utiltools'
+import { setUrlPath, resolveUrlPath } from '../../../../utils/utiltools'
 import { mapGetters } from 'vuex'
 
 export default {

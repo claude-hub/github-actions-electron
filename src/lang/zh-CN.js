@@ -1,6 +1,6 @@
 export default {
   logo: {
-    name: 'CashBox',
+    name: '千寻',
     title: '后台系统'
   },
   close: {
@@ -17,16 +17,6 @@ export default {
       'name': '首页',
       'path': '/',
       'icon': 'icon-home'
-    },
-    {
-      'name': '公告管理',
-      'path': '/pub',
-      'icon': 'icon-gonggao'
-    },
-    {
-      'name': '轮播管理',
-      'path': '/swipe',
-      'icon': 'icon-lunbo_huaban'
     }
   ],
   language: {
@@ -48,7 +38,7 @@ export default {
     cancel: '取消'
   },
   login: {
-    title: 'CashBox 后台系统',
+    title: '千寻 后台系统',
     logIn: '登录',
     account: '账号',
     password: '密码',

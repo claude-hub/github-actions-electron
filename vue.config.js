@@ -21,6 +21,13 @@ module.exports = {
         pathRewrite: {
           '^/admin': '/admin'
         }
+      },
+      '/captcha': {
+        target: url,
+        ws: true,
+        pathRewrite: {
+          '^/captcha': '/captcha'
+        }
       }
     }
   }

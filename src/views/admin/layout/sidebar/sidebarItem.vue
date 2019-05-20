@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import { resolveUrlPath } from '../../../utils/utiltools'
+import { resolveUrlPath } from '../../../../utils/utiltools'
 export default {
   name: 'SidebarItem',
   data () {
