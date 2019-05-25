@@ -1,11 +1,11 @@
 <template>
   <el-container class="container">
     <el-aside class="aside" :class="{'is-active':isCollapse}" width="230px">
-      <sidebar></sidebar>
+      <sidebar />
     </el-aside>
     <el-container>
       <el-header style="height: 108px; padding: 0">
-        <top></top>
+        <top />
       </el-header>
       <el-main>
         <div class="page">
@@ -50,6 +50,20 @@ export default {
   },
   computed: {
     ...mapGetters(['isCollapse'])
+  },
+  created() {
+    this.getUserInfo()
+  },
+  methods: {
+    getUserInfo() {
+      this.$store.dispatch('GetUserInfo').then((data) => {
+        console.log(data)
+      }).catch(err => {
+        console.log(err)
+        alert(err)
+        window.location.href = 'http://localhost:8081/auth/authentication/require'
+      })
+    }
   }
 }
 </script>

@@ -1,6 +1,6 @@
-const url = 'http://127.0.0.1:9999'
+const url = 'http://localhost:80'
 // 基础路径，发布前修改这里,当前配置打包出来的资源都是相对路径
-let publicPath = './'
+const publicPath = './'
 module.exports = {
   publicPath: publicPath,
   lintOnSave: true,

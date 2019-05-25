@@ -7,16 +7,16 @@ const page = {
   },
   actions: {
     /** 更改当前打开的页面的状态 **/
-    SetPageState ({ commit }, params) {
+    SetPageState({ commit }, params) {
       commit('ADD_PAGE_LIST', params)
       commit('SET_CURRENT_PAGE', params)
     },
     /** 显示上一个打开的页面 **/
-    ShowPrePage ({ commit }, params) {
+    ShowPrePage({ commit }, params) {
       commit('SHOW_PRE_PAGE', params)
     },
     /** 关闭其他打开的页面 **/
-    CloseOthersPage ({ commit }, params) {
+    CloseOthersPage({ commit }, params) {
       commit('SET_CURRENT_PAGE', params)
       commit('CLOSE_OTHERS_PAGE', params)
     }

@@ -11,6 +11,7 @@ export const getters = {
   isLock: state => state.common.isLock,
   lockPassword: state => state.common.lockPassword,
   theme: state => state.common.theme,
+  language: state => state.common.language,
 
   openedPages: state => state.page.openedPages,
   currentPage: state => state.page.currentPage

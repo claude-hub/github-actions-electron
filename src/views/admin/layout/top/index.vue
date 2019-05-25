@@ -3,49 +3,61 @@
     <div class="nav">
       <div class="left-menu">
         <div class="tags-breadcrumb" :class="[{ 'tag-collapse_right': isCollapse }]">
-          <i class="iconfont icon-menu" @click="showCollapse"></i>
+          <i class="iconfont icon-menu" @click="showCollapse" />
         </div>
         <div :class="{'is-active' : currentPage.path === $t('defaultHomePage.path')}" class="menu-item" @click="openPage">
-          {{$t('navbar.dashboard')}}
+          {{ $t('navbar.dashboard') }}
         </div>
       </div>
       <div class="top-operate">
-        <el-dropdown class="item-operate"
-                     size="small"
-                     placement="bottom">
-          <i class="iconfont icon-yuyan"></i>
+        <el-dropdown
+          class="item-operate"
+          size="small"
+          placement="bottom"
+        >
+          <i class="iconfont icon-yuyan" />
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item :disabled="language==='zh-CN'">
-              <div @click="changeLanguage('zh-CN')">{{$t('navbar.chinese')}}</div>
+              <div @click="changeLanguage('zh-CN')">
+                {{ $t('navbar.chinese') }}
+              </div>
             </el-dropdown-item>
             <el-dropdown-item :disabled="language==='en'">
-              <div  @click="changeLanguage('en')">English</div>
+              <div @click="changeLanguage('en')">
+                English
+              </div>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <el-tooltip class="item-operate"
-                    effect="dark"
-                    :content="isFullScreen?$t('navbar.exitFullScreen'):$t('navbar.screenFull')"
-                    placement="bottom">
-            <span class="top-item">
-            <i class="iconfont" :class="isFullScreen?'icon-tuichuquanping':'icon-quanping'" @click="handleScreen"></i>
+        <el-tooltip
+          class="item-operate"
+          effect="dark"
+          :content="isFullScreen?$t('navbar.exitFullScreen'):$t('navbar.screenFull')"
+          placement="bottom"
+        >
+          <span class="top-item">
+            <i class="iconfont" :class="isFullScreen?'icon-tuichuquanping':'icon-quanping'" @click="handleScreen" />
           </span>
         </el-tooltip>
         <el-dropdown class="item-operate" size="small">
-              <span class="el-dropdown-link">
-                {{userName}}
-                <i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
+          <span class="el-dropdown-link">
+            {{ userName }}
+            <i class="el-icon-arrow-down el-icon--right" />
+          </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
-              <router-link to="/">{{$t('navbar.editMsg')}}</router-link>
+              <router-link to="/">
+                {{ $t('navbar.editMsg') }}
+              </router-link>
             </el-dropdown-item>
-            <el-dropdown-item @click.native="logout" divided>{{$t('navbar.exit')}}</el-dropdown-item>
+            <el-dropdown-item divided @click.native="logout">
+              {{ $t('navbar.exit') }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
     </div>
-    <opened-pages></opened-pages>
+    <opened-pages />
   </div>
 </template>
 
@@ -55,34 +67,37 @@ import { fullscreenToggel, listenfullscreen } from '../../../../utils/utiltools'
 import openedPages from './openedpages'
 
 export default {
+  components: {
+    openedPages
+  },
   computed: {
     ...mapState({
       userName: state => state.user.userName
     }),
     ...mapGetters(['isFullScreen', 'isCollapse', 'currentPage', 'language'])
   },
-  mounted () {
+  mounted() {
     listenfullscreen(this.setScreen)
   },
   methods: {
-    changeLanguage (lang) {
+    changeLanguage(lang) {
       this.$i18n.locale = lang
       this.$store.dispatch('SetLanguage', lang)
     },
-    showCollapse () {
+    showCollapse() {
       this.$store.dispatch('SetCollapseState')
     },
-    handleScreen () {
+    handleScreen() {
       fullscreenToggel()
     },
-    setScreen () {
+    setScreen() {
       this.$store.dispatch('SetFullScreen')
     },
-    openPage () {
+    openPage() {
       this.$router.push(this.$t('defaultHomePage.path'))
       this.$store.dispatch('SetPageState', this.$t('defaultHomePage'))
     },
-    logout () {
+    logout() {
       this.$confirm(this.$t('navbar.isExit'), this.$t('navbar.tips'), {
         confirmButtonText: this.$t('navbar.confirm'),
         cancelButtonText: this.$t('navbar.cancel'),
@@ -94,9 +109,6 @@ export default {
       }, () => {
       })
     }
-  },
-  components: {
-    openedPages
   }
 }
 </script>

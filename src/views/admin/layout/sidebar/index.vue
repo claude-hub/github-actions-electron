@@ -1,7 +1,7 @@
 <template>
   <div class="left" :class="{'is-active':isCollapse}">
     <div class="sidebar-container">
-      <logo :isCollapse="isCollapse"></logo>
+      <logo :is-collapse="isCollapse" />
       <el-menu
         unique-opened
         mode="vertical"
@@ -10,8 +10,9 @@
         :collapse="isCollapse"
         background-color="#00142a"
         text-color="hsla(0,0%,100%,.65)"
-        active-text-color="#409eff">
-        <sidebar-item :userMenu="$t('userMenus')" :isCollapse="isCollapse"></sidebar-item>
+        active-text-color="#409eff"
+      >
+        <sidebar-item :user-menu="$t('userMenus')" :is-collapse="isCollapse" />
       </el-menu>
     </div>
   </div>
@@ -24,11 +25,11 @@ import SidebarItem from './sidebarItem'
 import { setUrlPath } from '../../../../utils/utiltools'
 
 export default {
-  name: 'index',
+  name: 'Index',
   components: { SidebarItem, Logo },
   computed: {
     ...mapGetters(['isCollapse']),
-    defaultActive: function () {
+    defaultActive: function() {
       return setUrlPath(this.$route)
     }
   }

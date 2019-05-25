@@ -1,44 +1,63 @@
 <template>
-  <el-form class="login-form" status-icon :rules="loginRules" ref="loginForm" :model="loginForm" label-width="0">
+  <el-form ref="loginForm" class="login-form" status-icon :rules="loginRules" :model="loginForm" label-width="0">
     <el-form-item prop="username">
-      <el-input size="small" @keyup.enter.native="handleLogin" v-model="loginForm.username" auto-complete="off"
-                placeholder="用户名 | 邮箱 | 手机号">
-        <i slot="prefix" class="iconfont icon-user"></i>
+      <el-input
+        v-model="loginForm.username"
+        size="small"
+        auto-complete="off"
+        placeholder="用户名 | 邮箱 | 手机号"
+        @keyup.enter.native="handleLogin"
+      >
+        <i slot="prefix" class="iconfont icon-user" />
       </el-input>
     </el-form-item>
     <el-form-item prop="password">
-      <el-input size="small" @keyup.enter.native="handleLogin" :type="passwordType" v-model="loginForm.password"
-                auto-complete="off" placeholder="密码">
-        <i class="iconfont icon-eye" slot="suffix" @click="showPassword"></i>
-        <i slot="prefix" class="iconfont icon-password"></i>
+      <el-input
+        v-model="loginForm.password"
+        size="small"
+        :type="passwordType"
+        auto-complete="off"
+        placeholder="密码"
+        @keyup.enter.native="handleLogin"
+      >
+        <i slot="suffix" class="iconfont icon-eye" @click="showPassword" />
+        <i slot="prefix" class="iconfont icon-password" />
       </el-input>
     </el-form-item>
     <el-form-item prop="captcha">
       <el-row :span="24">
         <el-col :span="12">
           <el-input
-            size="small"
-            @keyup.enter.native="handleLogin"
-            :maxlength="code.len"
             v-model="loginForm.captcha"
-            auto-complete="off" placeholder="请输入验证码">
-            <i slot="prefix" class="iconfont icon-yanzhengma"></i>
+            size="small"
+            :maxlength="code.len"
+            auto-complete="off"
+            placeholder="请输入验证码"
+            @keyup.enter.native="handleLogin"
+          >
+            <i slot="prefix" class="iconfont icon-yanzhengma" />
           </el-input>
         </el-col>
         <el-col :span="12">
           <div class="login-code">
-            <img :src="code.src" @click="refreshCode"/>
+            <img :src="code.src" @click="refreshCode">
           </div>
         </el-col>
       </el-row>
     </el-form-item>
-    <el-checkbox v-model="loginForm.remember">记住账号</el-checkbox>
+    <el-checkbox v-model="loginForm.remember">
+      记住账号
+    </el-checkbox>
     <el-form-item>
-      <el-button type="primary"
-                 :loading="this.loading"
-                 size="small"
-                 @click.native.prevent="handleLogin"
-                 class="login-submit">登录</el-button>
+      <el-button
+        type="primary"
+        :loading="loading"
+        size="small"
+        class="login-submit"
+        @click.native.prevent="handleLogin"
+      >
+        登录
+      </el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -49,8 +68,8 @@ import { mapGetters } from 'vuex'
 import { Msg } from '@/utils/message'
 
 export default {
-  name: 'userlogin',
-  data () {
+  name: 'Userlogin',
+  data() {
     return {
       loginForm: {
         username: '15223246130',
@@ -81,23 +100,23 @@ export default {
       passwordType: 'password'
     }
   },
-  created () {
-    this.refreshCode()
-  },
   computed: {
     ...mapGetters(['defaultHomePage'])
   },
+  created() {
+    this.refreshCode()
+  },
   methods: {
-    refreshCode () {
+    refreshCode() {
       this.loginForm.randomStr = randomLenNum(this.code.len, true)
       this.code.src = `${window.location.origin}/captcha?randomStr=${this.loginForm.randomStr}`
     },
-    showPassword () {
+    showPassword() {
       this.passwordType === ''
         ? (this.passwordType = 'password')
         : (this.passwordType = '')
     },
-    handleLogin () {
+    handleLogin() {
       this.loading = true
       this.$refs.loginForm.validate(valid => {
         if (valid) {

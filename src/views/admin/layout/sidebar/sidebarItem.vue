@@ -4,28 +4,30 @@
       <!--没有子菜单的项-->
       <el-menu-item
         v-if="item.children===undefined || item.children.length===0"
+        :key="index"
         :index="filterPath(item.path,index)"
         @click="open(item)"
-        :key="index">
-        <i class="iconfont" :class="item.icon"></i>
-        <span slot="title">{{item.name}}</span>
+      >
+        <i class="iconfont" :class="item.icon" />
+        <span slot="title">{{ item.name }}</span>
       </el-menu-item>
       <!--有子菜单的项-->
-      <el-submenu v-else :index="filterPath(item.name,index)" :key="item.name">
+      <el-submenu v-else :key="item.name" :index="filterPath(item.name,index)">
         <template slot="title">
-          <i class="iconfont" :class="item.icon"></i>
-          <span slot="title" :class="{'el-menu--display':isCollapse}">{{item.name}}</span>
+          <i class="iconfont" :class="item.icon" />
+          <span slot="title" :class="{'el-menu--display':isCollapse}">{{ item.name }}</span>
         </template>
         <template v-for="(child,cIndex) in item.children">
           <el-menu-item
+            v-if="child.children===undefined || child.children.length===0"
+            :key="cIndex"
             :index="filterPath(child.path,cIndex)"
             @click="open(child)"
-            v-if="child.children===undefined || child.children.length===0"
-            :key="cIndex">
-            <i class="iconfont"  :class="child.icon"></i>
-            <span slot="title">{{child.name}}</span>
+          >
+            <i class="iconfont" :class="child.icon" />
+            <span slot="title">{{ child.name }}</span>
           </el-menu-item>
-          <sidebar-item v-else :menu="[child]" :key="cIndex" :isCollapse="isCollapse"></sidebar-item>
+          <sidebar-item v-else :key="cIndex" :menu="[child]" :is-collapse="isCollapse" />
         </template>
       </el-submenu>
     </template>
@@ -35,22 +37,23 @@
 import { resolveUrlPath } from '../../../../utils/utiltools'
 export default {
   name: 'SidebarItem',
-  data () {
-    return {}
-  },
   props: {
-    userMenu: {
-      type: Array
-    },
     isCollapse: {
       type: Boolean
+    },
+    /* eslint-disable */
+    userMenu: {
+      type: Array
     }
   },
+  data() {
+    return {}
+  },
   methods: {
-    filterPath (path, index) {
+    filterPath(path, index) {
       return path == null ? index + '' : path
     },
-    open (item) {
+    open(item) {
       this.$router.push({
         path: resolveUrlPath(item.path, item.name)
       })

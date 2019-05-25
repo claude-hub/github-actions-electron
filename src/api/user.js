@@ -4,7 +4,7 @@
  * 用户api接口
  */
 export class UserApi {
-  static login (params) {
+  static login(params) {
     return server({
       url: '/auth/oauth/token',
       headers: {
@@ -14,11 +14,11 @@ export class UserApi {
       params: params
     })
   }
-  static getUserList (params) {
-    return server.get('/admin/sysUser/query', params)
+  static getUserList(params) {
+    return server.get('/admin/api/sysUser/query', params)
   }
 
-  static getUserInfo () {
-
+  static getUserInfo() {
+    return server.get('/admin/api/sysUser/info')
   }
 }

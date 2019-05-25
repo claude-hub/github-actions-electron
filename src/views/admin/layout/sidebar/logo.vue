@@ -1,14 +1,14 @@
 <template>
   <div class="logo">
     <transition name="fade">
-      <span v-if="isCollapse" class="logo_title is-bold " key="0">
-         CB
+      <span v-if="isCollapse" key="0" class="logo_title is-bold ">
+        QX
       </span>
     </transition>
     <transition-group name="fade">
       <template v-if="!isCollapse">
-        <span class="logo_title is-bold" key="1">{{$t('logo.name')}}</span>
-        <span class="logo_subtitle" key="2">{{$t('logo.title')}}</span>
+        <span key="1" class="logo_title is-bold">{{ $t('logo.name') }}</span>
+        <span key="2" class="logo_subtitle">{{ $t('logo.title') }}</span>
       </template>
     </transition-group>
   </div>
@@ -16,7 +16,8 @@
 
 <script>
 export default {
-  name: 'logo',
+  name: 'Logo',
+  /* eslint-disable */
   props: ['isCollapse']
 }
 </script>

@@ -24,38 +24,38 @@ const user = {
   },
   /** 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation */
   mutations: {
-    SET_USER_ID (state, user_id) {
+    SET_USER_ID(state, user_id) {
       state.user_id = user_id
       setCookies('user_id', user_id)
     },
-    SET_ACCESS_TOKEN (state, access_token) {
+    SET_ACCESS_TOKEN(state, access_token) {
       state.access_token = access_token
       setCookies('access_token', access_token)
     },
-    SET_REFRESH_TOKEN (state, refresh_token) {
+    SET_REFRESH_TOKEN(state, refresh_token) {
       state.refresh_token = refresh_token
       setCookies('refresh_token', refresh_token)
     },
-    SET_EXPIRES_IN (state, expires_in) {
+    SET_EXPIRES_IN(state, expires_in) {
       state.expires_in = expires_in
       setCookies('expires_in', expires_in)
     },
-    SET_USER_INFO (state, user_info) {
+    SET_USER_INFO(state, user_info) {
       state.userInfo = user_info
       setStore('userInfo', user_info)
     },
-    SET_PERMISSIONS (state, permissions) {
+    SET_PERMISSIONS(state, permissions) {
       state.permissions = permissions
       setStore('permissions', permissions)
     },
-    SET_MENU (state, userMenu) {
+    SET_MENU(state, userMenu) {
       state.userMenu = userMenu
       setStore('userMenu', userMenu)
     },
-    REMOVE_TOKEN (state) {
+    REMOVE_TOKEN(state) {
       removeCookies('token')
     },
-    REMOVE_MENU_MSG (state) {
+    REMOVE_MENU_MSG(state) {
       removeStore('userInfo')
       removeStore('permissions')
       removeStore('openedPages')
@@ -66,7 +66,7 @@ const user = {
   /** Action 提交的是 mutation，而不是直接变更状态。Action 可以包含任意异步操作。 */
   actions: {
     /** 根据用户名登录 */
-    LoginByUsername ({ commit }, params) {
+    LoginByUsername({ commit }, params) {
       params.scope = 'server'
       params.grant_type = 'password'
       params.client_id = 'qx'
@@ -86,7 +86,7 @@ const user = {
       })
     },
     /** 获取用户信息 **/
-    GetUserInfo ({ commit }, params) {
+    GetUserInfo({ commit }, params) {
       return new Promise((resolve, reject) => {
         UserApi.getUserInfo(params).then((res) => {
           const data = res.data.data || {}
@@ -99,7 +99,7 @@ const user = {
       })
     },
     /** 获取用户动态菜单 */
-    GetUserMenus ({ commit }, params) {
+    GetUserMenus({ commit }, params) {
       return new Promise((resolve, reject) => {
         MenuApi.userMenus().then((res) => {
           console.log(res)
@@ -109,7 +109,7 @@ const user = {
         })
       })
     },
-    LogOut ({ commit }) {
+    LogOut({ commit }) {
       commit('REMOVE_TOKEN')
       commit('REMOVE_MENU_MSG')
     }
