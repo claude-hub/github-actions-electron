@@ -1,5 +1,5 @@
 {
-  "name": "github_action_test",
+  "name": "github-actions-electron",
   "version": "0.1.0",
   "private": true,
   "scripts": {

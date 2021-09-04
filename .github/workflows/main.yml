@@ -46,14 +46,14 @@ jobs:
         run: |
           npm run electron:build-win
         env:
-          GH_TOKEN: bef0b46667d2b13f8asdasdasd762873af59f71c
+          GH_TOKEN: ${{ secrets.TOKEN }}
 
       - name: build mac app
         if: matrix.os == 'macos-10.15'
         run: |
           npm run electron:build
         env:
-          GH_TOKEN: bef0b46667d2b13f8asdasdasd762873af59f71c
+          GH_TOKEN: ${{ secrets.TOKEN }}
 
       # step5: cleanup artifacts in dist_electron
       - name: cleanup artifacts for windows
